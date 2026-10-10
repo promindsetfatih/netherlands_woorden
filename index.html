@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Woordjes Leren</title>
+<style>
+:root{--bg:#fff6ec;--surface:#fff;--text:#161616;--muted:#7a6f66;--accent:#ff7a00;--act:#e65f00;--on:#111;--good:#ff7a00;--bad:#161616;--border:#f0dcc8;--back:#161616;--backtext:#ff8f1f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121212;--surface:#1e1e1e;--text:#f5f2ee;--muted:#a09890;--accent:#ff8a1f;--act:#ff8a1f;--on:#111;--good:#ff8a1f;--bad:#3a3a3a;--border:#333;--back:#ff8a1f;--backtext:#111}}
+:root[data-theme="dark"]{--bg:#121212;--surface:#1e1e1e;--text:#f5f2ee;--muted:#a09890;--accent:#ff8a1f;--act:#ff8a1f;--on:#111;--good:#ff8a1f;--bad:#3a3a3a;--border:#333;--back:#ff8a1f;--backtext:#111}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;flex-direction:column;max-width:520px;margin-inline:auto}
+header{padding:14px 20px 4px;font-size:22px;font-weight:800;letter-spacing:-.3px;color:var(--act)}
+main{flex:1;overflow-y:auto;padding:8px 20px 16px;display:flex;flex-direction:column}
+.credit{text-align:center;font-size:12px;color:var(--muted);padding:6px 0}
+nav{display:flex;border-top:1px solid var(--border);background:var(--surface)}
+nav button{flex:1;padding:12px 0 14px;background:none;border:0;color:var(--muted);font-size:13px;font-weight:600}
+nav button span{display:block;font-size:20px}
+nav button.on{color:var(--act)}
+.stats{display:flex;gap:10px;margin:8px 0 18px}
+.stat{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 8px;text-align:center}
+.stat b{display:block;font-size:26px}
+.stat small{color:var(--muted);font-size:12px}
+.seg{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:16px}
+.seg button{flex:1;border:0;background:none;padding:10px 4px;border-radius:9px;font-size:14px;color:var(--muted);font-weight:600}
+.seg button.on{background:var(--accent);color:var(--on)}
+.btn{width:100%;border:0;border-radius:14px;padding:16px;font-size:17px;font-weight:700;color:var(--on);background:var(--accent);margin-bottom:10px}
+.btn.alt{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.btn:disabled{opacity:.4}
+.bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px 0 4px}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.cnt{font-size:13px;color:var(--muted);text-align:right}
+.scene{perspective:1100px;flex:1;min-height:260px;max-height:420px;margin:14px 0;cursor:pointer}
+.card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.3,.7,.3,1)}
+.card.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.front{background:var(--surface);border:1px solid var(--border)}
+.back{background:var(--back);color:var(--backtext);transform:rotateY(180deg)}
+.lbl{position:absolute;top:18px;font-size:11px;letter-spacing:2px;opacity:.55;font-weight:700}
+.word{font-size:clamp(28px,9vw,44px);font-weight:800;word-break:break-word;line-height:1.15}
+.hint{position:absolute;bottom:18px;font-size:13px;opacity:.5}
+.spk{position:absolute;top:10px;right:12px;border:0;background:none;font-size:22px;padding:8px}
+.box{position:absolute;top:18px;right:62px;font-size:11px;opacity:.5}
+.ans{display:flex;gap:10px;opacity:0;pointer-events:none;transition:opacity .25s}
+.ans.show{opacity:1;pointer-events:auto}
+.ans .btn{margin:0}
+.no{background:var(--bad);color:#fff}.yes{background:var(--good)}
+input,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-family:inherit;margin-bottom:8px}
+h3{margin:18px 0 8px;font-size:15px;color:var(--muted)}
+.row{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin-bottom:6px}
+.row div{flex:1;min-width:0}.row b{display:block}.row small{color:var(--muted)}
+.row button{border:0;background:none;color:var(--muted);font-size:18px;padding:6px}
+.done{text-align:center;margin:auto 0}
+.done .big{font-size:64px}
+.done h2{margin:8px 0 4px}.done p{color:var(--muted);margin:0 0 24px}
+</style>
+</head>
+<body>
+<header id="title">Woordjes Leren</header>
+<main id="view"></main>
+<div class="credit">Ontwikkeld door Fatih</div>
+<nav>
+  <button id="t-study" class="on"><span>🃏</span>Oefenen</button>
+  <button id="t-words"><span>📖</span>Woorden</button>
+</nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const KEY="kelime_kartlari_v1";
+const GAP={1:0,2:1,3:3,4:7,5:14};
+const SAMPLE=[["huis","house"],["boek","book"],["fiets","bicycle"],["vriend","friend"],["lekker","tasty, delicious"],["moeilijk","difficult"],["mooi","beautiful"],["leren","to learn"],["onthouden","to remember"],["gezellig","cozy, pleasant"]];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const mk=(w,m)=>({id:Date.now()+Math.random(),w,m,box:1,last:null});
+const today=()=>Math.floor(Date.now()/864e5);
+
+let cards=[];
+try{cards=JSON.parse(localStorage.getItem(KEY)||"null")||[];}catch(e){cards=[];}
+if(!cards.length){cards=SAMPLE.map(([w,m])=>mk(w,m));}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(cards));}catch(e){}}
+
+const isDue=c=>c.last===null||c.last+GAP[c.box]<=today();
+const S={tab:"study",mode:"home",ters:false,queue:[],i:0,flipped:false,ok:0};
+
+function start(all){
+  let q=cards.filter(c=>all||isDue(c));
+  q.sort(()=>Math.random()-.5);
+  q.sort((a,b)=>a.box-b.box);
+  S.queue=q.slice(0,15);S.i=0;S.ok=0;S.flipped=false;S.mode="session";render();
+}
+function flip(){S.flipped=!S.flipped;$(".card").classList.toggle("flipped",S.flipped);$(".ans").classList.toggle("show",S.flipped);}
+function answer(good){
+  const c=S.queue[S.i];
+  c.box=good?Math.min(5,c.box+1):1;c.last=today();
+  if(good)S.ok++;
+  save();
+  $(".card").classList.remove("flipped");$(".ans").classList.remove("show");
+  setTimeout(()=>{S.i++;S.flipped=false;if(S.i>=S.queue.length)S.mode="done";render();},300);
+}
+function speak(e,text){
+  e.stopPropagation();
+  try{const u=new SpeechSynthesisUtterance(text);u.lang="nl-NL";speechSynthesis.cancel();speechSynthesis.speak(u);}catch(err){}
+}
+
+function viewStudy(){
+  const el=$("#view");
+  if(S.mode==="home"){
+    const due=cards.filter(isDue).length,learned=cards.filter(c=>c.box===5).length;
+    el.innerHTML=`
+    <div class="stats">
+      <div class="stat"><b>${cards.length}</b><small>Totaal</small></div>
+      <div class="stat"><b>${due}</b><small>Vandaag</small></div>
+      <div class="stat"><b>${learned}</b><small>Geleerd</small></div>
+    </div>
+    <div class="seg">
+      <button id="d1" class="${S.ters?"":"on"}">Woord → Betekenis</button>
+      <button id="d2" class="${S.ters?"on":""}">Betekenis → Woord</button>
+    </div>
+    <button class="btn" id="go" ${due?"":"disabled"}>${due?"Beginnen met oefenen":"Klaar voor vandaag 🎉"}</button>
+    <button class="btn alt" id="all" ${cards.length?"":"disabled"}>Alle woorden oefenen</button>`;
+    $("#d1").onclick=()=>{S.ters=false;render();};
+    $("#d2").onclick=()=>{S.ters=true;render();};
+    $("#go").onclick=()=>start(false);
+    $("#all").onclick=()=>start(true);
+  }else if(S.mode==="session"){
+    const c=S.queue[S.i],front=S.ters?c.m:c.w,back=S.ters?c.w:c.m;
+    const spk=t=>`<button class="spk" aria-label="Uitspreken" data-t="${esc(t)}">🔊</button>`;
+    el.innerHTML=`
+    <div class="cnt">${S.i+1} / ${S.queue.length}</div>
+    <div class="bar"><i style="width:${S.i/S.queue.length*100}%"></i></div>
+    <div class="scene" id="scene"><div class="card ${S.flipped?"flipped":""}">
+      <div class="face front"><span class="lbl">${S.ters?"BETEKENIS":"WOORD"}</span><span class="box">Doos ${c.box}</span>${S.ters?"":spk(c.w)}
+        <div class="word">${esc(front)}</div><span class="hint">tik om te draaien</span></div>
+      <div class="face back"><span class="lbl">${S.ters?"WOORD":"BETEKENIS"}</span>${S.ters?spk(c.w):""}
+        <div class="word">${esc(back)}</div></div>
+    </div></div>
+    <div class="ans"><button class="btn no" id="no">Wist ik niet</button><button class="btn yes" id="yes">Wist ik</button></div>
+    <button class="btn alt" id="quit" style="margin-top:12px">Stoppen</button>`;
+    $("#scene").onclick=flip;
+    document.querySelectorAll(".spk").forEach(b=>b.onclick=e=>speak(e,b.dataset.t));
+    $("#no").onclick=()=>answer(false);
+    $("#yes").onclick=()=>answer(true);
+    $("#quit").onclick=()=>{S.mode="home";render();};
+  }else{
+    const n=S.queue.length;
+    el.innerHTML=`<div class="done"><div class="big">${S.ok===n?"🏆":"👏"}</div>
+      <h2>${S.ok} / ${n} goed</h2><p>Wat je niet wist gaat terug naar doos 1 en komt snel terug.</p>
+      <button class="btn" id="back">Klaar</button></div>`;
+    $("#back").onclick=()=>{S.mode="home";render();};
+  }
+}
+
+function viewWords(){
+  $("#view").innerHTML=`
+  <h3>NIEUW WOORD</h3>
+  <input id="nw" placeholder="Woord" autocapitalize="none" autocomplete="off">
+  <input id="nm" placeholder="Betekenis" autocomplete="off">
+  <button class="btn" id="add">Toevoegen</button>
+  <h3>MEERDERE TOEVOEGEN (plak uit Excel: kolom A woord, kolom B betekenis)</h3>
+  <textarea id="bulk" rows="3" placeholder="kat = cat&#10;hond = dog"></textarea>
+  <button class="btn alt" id="addb">Plakken en toevoegen</button>
+  <h3>OF BESTAND UPLOADEN (.xlsx, .xls, .csv)</h3>
+  <input type="file" id="file" accept=".xlsx,.xls,.csv">
+  <h3>WOORDEN (${cards.length})</h3>
+  ${cards.map(c=>`<div class="row"><div><b>${esc(c.w)}</b><small>${esc(c.m)} · Doos ${c.box}</small></div><button data-id="${c.id}" aria-label="Verwijderen">✕</button></div>`).join("")}`;
+  const add=(w,m)=>{w=w.trim();m=m.trim();if(w&&m&&!cards.some(c=>c.w.toLowerCase()===w.toLowerCase()))cards.push(mk(w,m));};
+  $("#add").onclick=()=>{add($("#nw").value,$("#nm").value);save();render();};
+  $("#addb").onclick=()=>{
+    $("#bulk").value.split("\n").forEach(l=>{const k=l.search(/[=,\t]/);if(k>0)add(l.slice(0,k),l.slice(k+1));});
+    save();render();
+  };
+  $("#file").onchange=async e=>{
+    const f=e.target.files[0];if(!f)return;
+    try{
+      const wb=XLSX.read(await f.arrayBuffer(),{type:"array",codepage:65001});
+      const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1});
+      rows.forEach(r=>{
+        if(!r||r[0]==null||r[1]==null)return;
+        const w=String(r[0]);
+        if(["kelime","word"].includes(w.trim().toLowerCase()))return;
+        add(w,String(r[1]));
+      });
+      save();render();
+    }catch(err){alert("Bestand kon niet worden gelezen. Gebruik .xlsx of .csv.");}
+  };
+  document.querySelectorAll(".row button").forEach(b=>b.onclick=()=>{cards=cards.filter(c=>String(c.id)!==b.dataset.id);save();render();});
+}
+
+function render(){
+  $("#t-study").classList.toggle("on",S.tab==="study");
+  $("#t-words").classList.toggle("on",S.tab==="words");
+  S.tab==="study"?viewStudy():viewWords();
+}
+$("#t-study").onclick=()=>{S.tab="study";render();};
+$("#t-words").onclick=()=>{S.tab="words";render();};
+render();
+</script>
+</body>
+</html>
